@@ -1,14 +1,10 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Music, Video, Puzzle, Play } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
-
 const Hero: React.FC = () => {
   const isMobile = useIsMobile();
-  
-  return (
-    <section className="pt-12 pb-16 md:pb-24 px-4">
+  return <section className="pt-12 pb-16 md:pb-24 px-4">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row gap-8 items-center">
           <div className="flex-1 z-10">
@@ -57,17 +53,12 @@ const Hero: React.FC = () => {
               <div className={`absolute ${isMobile ? 'bottom-16 right-6 w-18 h-18' : 'bottom-20 right-8 w-24 sm:w-32 h-24 sm:h-32'} bg-sky rounded-3xl -rotate-6 animate-float animation-delay-400 shadow-lg`}></div>
               <div className={`absolute ${isMobile ? 'left-12 bottom-6 w-24 h-24' : 'left-16 bottom-8 w-32 sm:w-40 h-32 sm:h-40'} bg-primary rounded-full animate-float animation-delay-600 shadow-lg`}></div>
               <div className="absolute inset-0 flex items-center justify-center z-10">
-                <button className="bubble-button flex items-center space-x-2 bg-white text-primary hover:bg-primary hover:text-white px-6 py-4">
-                  <Play className="h-6 w-6" />
-                  <span className="font-baloo text-lg">Watch Demo</span>
-                </button>
+                
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
