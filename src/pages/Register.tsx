@@ -26,7 +26,7 @@ const Register = () => {
                 <div className="text-center mb-6">
                   <h1 className="text-2xl font-bold text-primary mb-2">Start Your Family's Fun Today!</h1>
                   <p className="text-text/70 text-sm">
-                    Create an account to begin your 7-day free trial
+                    Create an account to begin your entertainment journey
                   </p>
                 </div>
                 
@@ -127,7 +127,7 @@ const Register = () => {
                     type="submit"
                     className="bubble-button w-full flex justify-center"
                   >
-                    Create Account & Start Free Trial
+                    Create Account
                   </button>
                 </form>
                 
@@ -151,7 +151,7 @@ const Register = () => {
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                    <span>100+ songs, videos, and interactive games</span>
+                    <span>100+ songs and interactive games</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -176,9 +176,9 @@ const Register = () => {
                 </div>
                 
                 <div className="mt-8 p-4 bg-yellow/20 rounded-xl">
-                  <div className="font-bold mb-1">7-Day Free Trial</div>
+                  <div className="font-bold mb-1">Immediate Access</div>
                   <p className="text-sm">
-                    Try all premium features for free. No credit card required for registration.
+                    Get immediate access to all premium features when you subscribe. Cancel anytime.
                   </p>
                 </div>
               </div>

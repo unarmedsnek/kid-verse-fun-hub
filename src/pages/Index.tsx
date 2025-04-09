@@ -23,7 +23,7 @@ const Index = () => {
             Join thousands of happy families who trust us for safe and educational entertainment.
           </p>
           <Link to="/register" className="bubble-button text-lg">
-            Start Your Free Trial
+            Subscribe Now
           </Link>
         </div>
       </section>

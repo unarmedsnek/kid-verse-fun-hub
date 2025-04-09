@@ -1,11 +1,13 @@
 
 import React, { useState } from 'react';
 import Layout from '@/components/Layout';
-import { Music, Video, Puzzle, Search, Lock, Star } from 'lucide-react';
+import { Music, Puzzle, Search, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Checkbox } from '@/components/ui/checkbox';
 
 const Library = () => {
   const [activeTab, setActiveTab] = useState('all');
+  const [showOnlyFree, setShowOnlyFree] = useState(false);
 
   const contentItems = [
     {
@@ -14,7 +16,8 @@ const Library = () => {
       type: "song",
       icon: <Music className="h-5 w-5 text-primary" />,
       premium: false,
-      image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=400&h=250"
+      image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=400&h=250",
+      description: "Learn the alphabet through this catchy tune that children love."
     },
     {
       id: 2,
@@ -22,15 +25,17 @@ const Library = () => {
       type: "game",
       icon: <Puzzle className="h-5 w-5 text-yellow" />,
       premium: true,
-      image: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=400&h=250"
+      image: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=400&h=250",
+      description: "Interactive game teaching shapes and colors through fun adventures."
     },
     {
       id: 3,
       title: "Colors of the Rainbow",
-      type: "video",
-      icon: <Video className="h-5 w-5 text-sky" />,
+      type: "song",
+      icon: <Music className="h-5 w-5 text-primary" />,
       premium: false,
-      image: "https://images.unsplash.com/photo-1521651201144-634f700b36ef?auto=format&fit=crop&w=400&h=250"
+      image: "https://images.unsplash.com/photo-1521651201144-634f700b36ef?auto=format&fit=crop&w=400&h=250",
+      description: "A melodic journey through all the colors of the rainbow."
     },
     {
       id: 4,
@@ -38,7 +43,8 @@ const Library = () => {
       type: "song",
       icon: <Music className="h-5 w-5 text-primary" />,
       premium: true,
-      image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=400&h=250"
+      image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=400&h=250",
+      description: "Learn about different animals and the sounds they make."
     },
     {
       id: 5,
@@ -46,7 +52,8 @@ const Library = () => {
       type: "song",
       icon: <Music className="h-5 w-5 text-primary" />,
       premium: false,
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=400&h=250"
+      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=400&h=250",
+      description: "A fun counting song that helps children learn numbers 1-10."
     },
     {
       id: 6,
@@ -54,29 +61,33 @@ const Library = () => {
       type: "game",
       icon: <Puzzle className="h-5 w-5 text-yellow" />,
       premium: true,
-      image: "https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?auto=format&fit=crop&w=400&h=250"
+      image: "https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?auto=format&fit=crop&w=400&h=250",
+      description: "Test your memory with this engaging matching game."
     },
     {
       id: 7,
       title: "Fairy Tale Adventure",
-      type: "video",
-      icon: <Video className="h-5 w-5 text-sky" />,
+      type: "game",
+      icon: <Puzzle className="h-5 w-5 text-yellow" />,
       premium: true,
-      image: "https://images.unsplash.com/photo-1511622472-3037aef77d15?auto=format&fit=crop&w=400&h=250"
+      image: "https://images.unsplash.com/photo-1511622472-3037aef77d15?auto=format&fit=crop&w=400&h=250",
+      description: "Interactive storytelling game with classic fairy tales."
     },
     {
       id: 8,
       title: "Dinosaur Facts",
-      type: "video",
-      icon: <Video className="h-5 w-5 text-sky" />,
+      type: "game",
+      icon: <Puzzle className="h-5 w-5 text-yellow" />,
       premium: false,
-      image: "https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?auto=format&fit=crop&w=400&h=250"
+      image: "https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?auto=format&fit=crop&w=400&h=250",
+      description: "Learn about dinosaurs through fun facts and interactive elements."
     }
   ];
 
-  const filteredContent = activeTab === 'all' 
-    ? contentItems 
-    : contentItems.filter(item => item.type === activeTab);
+  // Filter by type and free/premium status
+  const filteredContent = contentItems
+    .filter(item => activeTab === 'all' || item.type === activeTab)
+    .filter(item => !showOnlyFree || !item.premium);
 
   return (
     <Layout>
@@ -87,7 +98,7 @@ const Library = () => {
               Our <span className="text-primary">Library</span>
             </h1>
             <p className="text-lg text-text/70 max-w-2xl mx-auto">
-              Browse our collection of educational and fun songs, videos, and games for children.
+              Browse our collection of educational and fun songs and games for children.
             </p>
           </div>
           
@@ -121,15 +132,6 @@ const Library = () => {
                 Songs
               </button>
               <button 
-                onClick={() => setActiveTab('video')}
-                className={`px-4 py-2 rounded-full font-medium text-sm flex items-center gap-1 whitespace-nowrap ${
-                  activeTab === 'video' ? 'bg-primary text-white' : 'bg-gray-100 text-text hover:bg-gray-200'
-                }`}
-              >
-                <Video className="h-4 w-4" />
-                Videos
-              </button>
-              <button 
                 onClick={() => setActiveTab('game')}
                 className={`px-4 py-2 rounded-full font-medium text-sm flex items-center gap-1 whitespace-nowrap ${
                   activeTab === 'game' ? 'bg-primary text-white' : 'bg-gray-100 text-text hover:bg-gray-200'
@@ -138,6 +140,16 @@ const Library = () => {
                 <Puzzle className="h-4 w-4" />
                 Games
               </button>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100">
+                <Checkbox 
+                  id="free-content" 
+                  checked={showOnlyFree}
+                  onCheckedChange={() => setShowOnlyFree(!showOnlyFree)}
+                />
+                <label htmlFor="free-content" className="text-sm font-medium cursor-pointer">
+                  Free content only
+                </label>
+              </div>
             </div>
           </div>
           
@@ -161,20 +173,12 @@ const Library = () => {
                   )}
                 </div>
                 <div className="p-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      {item.icon}
-                      <span className="ml-2 text-sm text-text/70 capitalize">{item.type}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Star className="h-4 w-4 text-yellow-dark fill-yellow-dark" />
-                      <Star className="h-4 w-4 text-yellow-dark fill-yellow-dark" />
-                      <Star className="h-4 w-4 text-yellow-dark fill-yellow-dark" />
-                      <Star className="h-4 w-4 text-yellow-dark fill-yellow-dark" />
-                      <Star className="h-4 w-4 text-yellow-dark fill-yellow-dark" />
-                    </div>
+                  <div className="flex items-center">
+                    {item.icon}
+                    <span className="ml-2 text-sm text-text/70 capitalize">{item.type}</span>
                   </div>
                   <h3 className="font-baloo font-semibold text-lg mt-2">{item.title}</h3>
+                  <p className="text-sm text-text/70 mt-1">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -186,7 +190,7 @@ const Library = () => {
               Unlock All Premium Content
             </h2>
             <p className="text-lg mb-6 max-w-2xl mx-auto">
-              Get unlimited access to our entire library of premium songs, videos, and games with a membership.
+              Get unlimited access to our entire library of premium songs and games with a membership.
             </p>
             <Link to="/membership" className="bubble-button">
               View Membership Options

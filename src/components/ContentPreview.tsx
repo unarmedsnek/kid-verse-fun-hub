@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Music, Video, Puzzle, Lock, Star } from 'lucide-react';
+import { Music, Puzzle, Lock } from 'lucide-react';
 
 const ContentPreview: React.FC = () => {
   const previewContent = [
@@ -12,6 +12,7 @@ const ContentPreview: React.FC = () => {
       icon: <Music className="h-5 w-5 text-primary" />,
       badge: "Free",
       badgeColor: "bg-green",
+      description: "Learn the alphabet through this catchy tune that children love.",
       image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=400&h=250"
     },
     {
@@ -21,15 +22,17 @@ const ContentPreview: React.FC = () => {
       icon: <Puzzle className="h-5 w-5 text-yellow" />,
       badge: "Premium",
       badgeColor: "bg-primary",
+      description: "Interactive game teaching shapes and colors through fun adventures.",
       image: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=400&h=250"
     },
     {
       id: 3,
       title: "Colors of the Rainbow",
-      type: "video",
-      icon: <Video className="h-5 w-5 text-sky" />,
+      type: "song",
+      icon: <Music className="h-5 w-5 text-primary" />,
       badge: "Free",
       badgeColor: "bg-green",
+      description: "A melodic journey through all the colors of the rainbow.",
       image: "https://images.unsplash.com/photo-1521651201144-634f700b36ef?auto=format&fit=crop&w=400&h=250"
     },
     {
@@ -39,6 +42,7 @@ const ContentPreview: React.FC = () => {
       icon: <Music className="h-5 w-5 text-primary" />,
       badge: "Premium",
       badgeColor: "bg-primary",
+      description: "Learn about different animals and the sounds they make.",
       image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=400&h=250"
     }
   ];
@@ -74,20 +78,12 @@ const ContentPreview: React.FC = () => {
                 )}
               </div>
               <div className="p-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    {item.icon}
-                    <span className="ml-2 text-sm text-text/70 capitalize">{item.type}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Star className="h-4 w-4 text-yellow-dark fill-yellow-dark" />
-                    <Star className="h-4 w-4 text-yellow-dark fill-yellow-dark" />
-                    <Star className="h-4 w-4 text-yellow-dark fill-yellow-dark" />
-                    <Star className="h-4 w-4 text-yellow-dark fill-yellow-dark" />
-                    <Star className="h-4 w-4 text-yellow-dark fill-yellow-dark" />
-                  </div>
+                <div className="flex items-center">
+                  {item.icon}
+                  <span className="ml-2 text-sm text-text/70 capitalize">{item.type}</span>
                 </div>
                 <h3 className="font-baloo font-semibold text-lg mt-2">{item.title}</h3>
+                <p className="text-sm text-text/70 mt-1">{item.description}</p>
               </div>
             </div>
           ))}

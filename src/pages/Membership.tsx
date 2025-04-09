@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import Layout from '@/components/Layout';
-import { CheckCircle, HelpCircle, AlertCircle } from 'lucide-react';
+import { CheckCircle, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Membership = () => {
@@ -11,7 +11,7 @@ const Membership = () => {
     "Unlimited access to all premium content",
     "Ad-free experience",
     "New content added weekly",
-    "Download songs and videos for offline use",
+    "Download songs and games for offline use",
     "Access on multiple devices",
     "Priority customer support"
   ];
@@ -30,8 +30,8 @@ const Membership = () => {
       answer: "Yes, our family plan allows up to 5 profiles under one subscription. Each profile gets personalized recommendations."
     },
     {
-      question: "Do you offer a free trial?",
-      answer: "We offer a 7-day free trial for new subscribers. You can cancel anytime during this period without being charged."
+      question: "When does my subscription begin?",
+      answer: "Your subscription begins immediately after payment is processed, giving you instant access to all premium content."
     }
   ];
 
@@ -107,10 +107,10 @@ const Membership = () => {
                 </div>
                 
                 <Link to="/register" className="bubble-button w-full flex justify-center">
-                  Start Free Trial
+                  Subscribe Now
                 </Link>
                 <p className="text-sm text-text/70 text-center mt-4">
-                  7-day free trial, cancel anytime
+                  Immediate access, cancel anytime
                 </p>
               </div>
             </div>
