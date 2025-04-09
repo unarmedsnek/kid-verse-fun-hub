@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import { Music, Puzzle, Search, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Checkbox } from '@/components/ui/checkbox';
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Library = () => {
   const [activeTab, setActiveTab] = useState('all');
   const [showOnlyFree, setShowOnlyFree] = useState(false);
+  const isMobile = useIsMobile();
 
   const contentItems = [
     {
@@ -113,43 +115,45 @@ const Library = () => {
               <Search className="absolute left-3 top-2.5 h-5 w-5 text-primary/60" />
             </div>
             
-            <div className="flex gap-2 overflow-x-auto w-full md:w-auto py-2">
-              <button 
-                onClick={() => setActiveTab('all')}
-                className={`px-4 py-2 rounded-full font-medium text-sm whitespace-nowrap ${
-                  activeTab === 'all' ? 'bg-primary text-white' : 'bg-gray-100 text-text hover:bg-gray-200'
-                }`}
-              >
-                All Content
-              </button>
-              <button 
-                onClick={() => setActiveTab('song')}
-                className={`px-4 py-2 rounded-full font-medium text-sm flex items-center gap-1 whitespace-nowrap ${
-                  activeTab === 'song' ? 'bg-primary text-white' : 'bg-gray-100 text-text hover:bg-gray-200'
-                }`}
-              >
-                <Music className="h-4 w-4" />
-                Songs
-              </button>
-              <button 
-                onClick={() => setActiveTab('game')}
-                className={`px-4 py-2 rounded-full font-medium text-sm flex items-center gap-1 whitespace-nowrap ${
-                  activeTab === 'game' ? 'bg-primary text-white' : 'bg-gray-100 text-text hover:bg-gray-200'
-                }`}
-              >
-                <Puzzle className="h-4 w-4" />
-                Games
-              </button>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100">
-                <Checkbox 
-                  id="free-content" 
-                  checked={showOnlyFree}
-                  onCheckedChange={() => setShowOnlyFree(!showOnlyFree)}
-                />
-                <label htmlFor="free-content" className="text-sm font-medium cursor-pointer">
+            <div className={`flex ${isMobile ? "flex-wrap justify-center" : ""} gap-2 w-full md:w-auto py-2`}>
+              <ToggleGroup type="single" value={activeTab} onValueChange={(value) => value && setActiveTab(value)}>
+                <ToggleGroupItem 
+                  value="all"
+                  className={`px-4 py-2 rounded-full font-medium text-sm whitespace-nowrap ${
+                    activeTab === 'all' ? 'bg-primary text-white' : 'bg-gray-100 text-text hover:bg-gray-200'
+                  }`}
+                >
+                  All Content
+                </ToggleGroupItem>
+                <ToggleGroupItem 
+                  value="song"
+                  className={`px-4 py-2 rounded-full font-medium text-sm flex items-center gap-1 whitespace-nowrap ${
+                    activeTab === 'song' ? 'bg-primary text-white' : 'bg-gray-100 text-text hover:bg-gray-200'
+                  }`}
+                >
+                  <Music className="h-4 w-4" />
+                  Songs
+                </ToggleGroupItem>
+                <ToggleGroupItem 
+                  value="game"
+                  className={`px-4 py-2 rounded-full font-medium text-sm flex items-center gap-1 whitespace-nowrap ${
+                    activeTab === 'game' ? 'bg-primary text-white' : 'bg-gray-100 text-text hover:bg-gray-200'
+                  }`}
+                >
+                  <Puzzle className="h-4 w-4" />
+                  Games
+                </ToggleGroupItem>
+                <ToggleGroupItem 
+                  value="free-content"
+                  pressed={showOnlyFree}
+                  onPressedChange={setShowOnlyFree}
+                  className={`px-4 py-2 rounded-full font-medium text-sm whitespace-nowrap ${
+                    showOnlyFree ? 'bg-primary text-white' : 'bg-gray-100 text-text hover:bg-gray-200'
+                  }`}
+                >
                   Free content only
-                </label>
-              </div>
+                </ToggleGroupItem>
+              </ToggleGroup>
             </div>
           </div>
           

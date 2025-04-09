@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import { Link } from 'react-router-dom';
 import { Mail, Lock, User, EyeOff, Eye, CheckCircle } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const isMobile = useIsMobile();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -16,12 +18,52 @@ const Register = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
+  const BenefitsList = () => (
+    <div className="space-y-4">
+      <div className="flex items-start">
+        <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
+        <span>Unlimited access to all premium content</span>
+      </div>
+      <div className="flex items-start">
+        <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
+        <span>100+ songs and interactive games</span>
+      </div>
+      <div className="flex items-start">
+        <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
+        <span>Ad-free, child-safe environment</span>
+      </div>
+      <div className="flex items-start">
+        <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
+        <span>New content added weekly</span>
+      </div>
+      <div className="flex items-start">
+        <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
+        <span>Download content for offline use</span>
+      </div>
+      <div className="flex items-start">
+        <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
+        <span>Access on multiple devices</span>
+      </div>
+      <div className="flex items-start">
+        <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
+        <span>Cancel anytime, no commitments</span>
+      </div>
+    </div>
+  );
+
   return (
     <Layout>
       <section className="py-16 px-4">
         <div className="container mx-auto">
           <div className="max-w-2xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {isMobile && (
+                <div>
+                  <h2 className="text-xl font-bold mb-6">Membership Benefits</h2>
+                  <BenefitsList />
+                </div>
+              )}
+              
               <div className="card border-2 border-primary/20 p-8">
                 <div className="text-center mb-6">
                   <h1 className="text-2xl font-bold text-primary mb-2">Start Your Family's Fun Today!</h1>
@@ -141,47 +183,19 @@ const Register = () => {
                 </div>
               </div>
               
-              <div className="bg-primary/5 p-8 rounded-3xl">
-                <h2 className="text-xl font-bold mb-6">Membership Benefits</h2>
-                
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Unlimited access to all premium content</span>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                    <span>100+ songs and interactive games</span>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Ad-free, child-safe environment</span>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                    <span>New content added weekly</span>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Download content for offline use</span>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Access on multiple devices</span>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Cancel anytime, no commitments</span>
+              {!isMobile && (
+                <div className="bg-primary/5 p-8 rounded-3xl">
+                  <h2 className="text-xl font-bold mb-6">Membership Benefits</h2>
+                  <BenefitsList />
+                  
+                  <div className="mt-8 p-4 bg-yellow/20 rounded-xl">
+                    <div className="font-bold mb-1">Immediate Access</div>
+                    <p className="text-sm">
+                      Get immediate access to all premium features when you subscribe. Cancel anytime.
+                    </p>
                   </div>
                 </div>
-                
-                <div className="mt-8 p-4 bg-yellow/20 rounded-xl">
-                  <div className="font-bold mb-1">Immediate Access</div>
-                  <p className="text-sm">
-                    Get immediate access to all premium features when you subscribe. Cancel anytime.
-                  </p>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

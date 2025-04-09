@@ -5,11 +5,11 @@ import { Music, Video, Puzzle, Play } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="pt-12 pb-24 px-4">
+    <section className="pt-12 pb-16 md:pb-24 px-4">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row gap-8 items-center">
           <div className="flex-1">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-text">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-text">
               <span className="text-primary">Songs</span> & 
               <span className="text-sky"> Games</span> for 
               <span className="text-yellow"> Happy</span> 
@@ -44,15 +44,15 @@ const Hero: React.FC = () => {
             </div>
           </div>
           
-          <div className="flex-1 relative">
+          <div className="flex-1 relative mt-10 md:mt-0">
             <div className="relative w-full aspect-square max-w-md mx-auto">
-              <div className="absolute inset-0 bg-primary/20 rounded-full animate-pulse"></div>
-              <div className="absolute left-4 top-6 w-28 h-28 bg-yellow rounded-2xl rotate-12 animate-float shadow-lg"></div>
-              <div className="absolute right-16 top-16 w-24 h-24 bg-green rounded-full animate-float animation-delay-200 shadow-lg"></div>
-              <div className="absolute bottom-20 right-8 w-32 h-32 bg-sky rounded-3xl -rotate-6 animate-float animation-delay-400 shadow-lg"></div>
-              <div className="absolute left-16 bottom-8 w-40 h-40 bg-primary rounded-full animate-float animation-delay-600 shadow-lg"></div>
+              <div className="absolute inset-0 bg-primary/20 rounded-full animate-pulse hidden sm:block"></div>
+              <div className="absolute left-4 top-6 w-20 sm:w-28 h-20 sm:h-28 bg-yellow rounded-2xl rotate-12 animate-float shadow-lg"></div>
+              <div className="absolute right-16 top-16 w-16 sm:w-24 h-16 sm:h-24 bg-green rounded-full animate-float animation-delay-200 shadow-lg"></div>
+              <div className="absolute bottom-20 right-8 w-24 sm:w-32 h-24 sm:h-32 bg-sky rounded-3xl -rotate-6 animate-float animation-delay-400 shadow-lg"></div>
+              <div className="absolute left-16 bottom-8 w-32 sm:w-40 h-32 sm:h-40 bg-primary rounded-full animate-float animation-delay-600 shadow-lg"></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <button className="bubble-button flex items-center space-x-2 bg-white text-primary hover:bg-primary hover:text-white px-6 py-4">
+                <button className="bubble-button flex items-center space-x-2 bg-white text-primary hover:bg-primary hover:text-white px-6 py-4 z-10">
                   <Play className="h-6 w-6" />
                   <span className="font-baloo text-lg">Watch Demo</span>
                 </button>
