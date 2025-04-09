@@ -1,7 +1,6 @@
-
 import React from 'react';
 import Layout from '@/components/Layout';
-import { User, Mail, CreditCard, LogOut, Settings, Gift } from 'lucide-react';
+import { User, Mail, CreditCard, LogOut, Settings, Gift, CheckCircle } from 'lucide-react';
 
 const Account = () => {
   // Mock user data
