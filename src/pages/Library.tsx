@@ -4,6 +4,7 @@ import Layout from '@/components/Layout';
 import { Music, Puzzle, Search, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Toggle } from "@/components/ui/toggle";
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Library = () => {
@@ -143,17 +144,18 @@ const Library = () => {
                   <Puzzle className="h-4 w-4" />
                   Games
                 </ToggleGroupItem>
-                <ToggleGroupItem 
-                  value="free-content"
-                  pressed={showOnlyFree}
-                  onPressedChange={setShowOnlyFree}
-                  className={`px-4 py-2 rounded-full font-medium text-sm whitespace-nowrap ${
-                    showOnlyFree ? 'bg-primary text-white' : 'bg-gray-100 text-text hover:bg-gray-200'
-                  }`}
-                >
-                  Free content only
-                </ToggleGroupItem>
               </ToggleGroup>
+              
+              {/* Changed from ToggleGroupItem to Toggle */}
+              <Toggle 
+                pressed={showOnlyFree}
+                onPressedChange={setShowOnlyFree}
+                className={`px-4 py-2 rounded-full font-medium text-sm whitespace-nowrap ${
+                  showOnlyFree ? 'bg-primary text-white' : 'bg-gray-100 text-text hover:bg-gray-200'
+                }`}
+              >
+                Free content only
+              </Toggle>
             </div>
           </div>
           
